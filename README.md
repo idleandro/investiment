@@ -1,5 +1,3 @@
-# investiment
+# Investiment Simulator in Angular 4
 
- Sistema simples de consultoria de investimento em Angular 4
-
-   - Somente Componentes angular
+   - Angular Components Only
