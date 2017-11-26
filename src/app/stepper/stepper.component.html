@@ -1,0 +1,86 @@
+<h1 class="title">Investment Consulting</h1>
+<!-- <app-grafic></app-grafic> -->
+<mat-horizontal-stepper [linear]="isLinear">
+
+	<mat-step [stepControl]="firstFormGroup">
+		<form [formGroup]="firstFormGroup">
+			<ng-template matStepLabel>Personal data</ng-template>
+
+			<mat-form-field class="width">
+				<input matInput placeholder="Name" formControlName="name" [(ngModel)]="name">
+			</mat-form-field> 
+
+			<mat-form-field>
+				<input matInput placeholder="Age" formControlName="age" [(ngModel)]="age">
+			</mat-form-field>
+
+			<div class="button-action">
+				<button mat-button matStepperNext [disabled]="!firstFormGroup.valid">Next</button>
+			</div>
+		</form>
+	</mat-step>
+
+
+	<mat-step [stepControl]="secondFormGroup">
+		<form [formGroup]="secondFormGroup">
+			<ng-template matStepLabel>Investment data</ng-template>
+			<app-investiment class="accordion"></app-investiment>
+			<div class="button-action">
+				<button mat-button matStepperPrevious>Back</button>
+				<button mat-button matStepperNext>Next</button>
+			</div>
+		</form>
+	</mat-step>
+	<mat-step>
+
+		<ng-template matStepLabel>Result</ng-template>
+
+		<mat-grid-list cols="2" rowHeight="2:1">
+			<div class="suggestion">
+				<p>Investment suggestion for your profile</p>
+			</div>
+			<div class="box">
+				<div class="card">
+					<mat-card>
+						<mat-card-header>
+							<div mat-card-avatar>
+								<i class="material-icons md-36">account_circle</i>
+							</div>
+							<mat-card-title>Your Profile</mat-card-title>
+						</mat-card-header>
+						<mat-card-content>
+						<mat-list>
+						  <mat-list-item>
+						  	<i class="material-icons">keyboard_arrow_right</i>
+							<span class="data">{{name}}, {{age}} years</span>
+						  </mat-list-item>
+						  <mat-list-item>
+						  	<i class="material-icons">keyboard_arrow_right</i>
+							<span class="data">{{statusTake}}</span>
+						  </mat-list-item>
+						  <mat-list-item>
+						  	<i class="material-icons">keyboard_arrow_right</i>
+							<span class="data">{{value | currency}}</span>
+						  </mat-list-item>
+						  <mat-list-item>
+						  	<i class="material-icons">keyboard_arrow_right</i>
+							<span class="data">{{time}}</span>
+						  </mat-list-item>
+						</mat-list>
+						</mat-card-content>
+					</mat-card>
+				</div>
+
+				<div class="card">
+						<app-paginator></app-paginator>
+				</div>
+			</div>
+		
+		</mat-grid-list>
+		<div class="button-action">
+			<button mat-button matStepperPrevious>Back</button>
+		</div>
+	</mat-step>
+
+
+</mat-horizontal-stepper>

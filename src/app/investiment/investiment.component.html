@@ -1,0 +1,54 @@
+<mat-accordion class="accordion">
+    <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" hideToggle="true">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+         Investment
+        </mat-panel-title>
+        <mat-panel-description>
+          <span class="description">Value of your investment</span>
+          <mat-icon>trending_up</mat-icon>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+
+      <mat-slide-toggle [(ngModel)]="valueStake" (click)="stake(valueStake)">High Risk?</mat-slide-toggle>
+      
+      <span class="value">{{value | currency}}</span>
+      <mat-slider  min="15000" max="100000" thumbLabel  step="10" value="15000" tickInterval="30" [(ngModel)]="value" (click)="Ivalue(value)" required> 
+      </mat-slider> 
+      <div class="values-investment">
+        <span>up to $ 15,000</span>
+        <span>$ 100 thousand</span>
+      </div>
+      <mat-action-row>
+        <button mat-button color="primary" (click)="nextStep()">Next</button>
+      </mat-action-row>
+    </mat-expansion-panel>
+
+
+    <mat-expansion-panel [expanded]="step === 1" (opened)="setStep(1)" hideToggle="true">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Time Investment
+        </mat-panel-title>
+        <mat-panel-description>
+          <span class="description">How long do you want to invest?</span>
+          <mat-icon>date_range</mat-icon>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+
+
+      <mat-radio-group class="radio-group"  >
+        <mat-radio-button *ngFor="let time of times"  [value]="time" (click)="myTime(time)">
+            {{time}}
+        </mat-radio-button>
+
+
+      </mat-radio-group>
+
+      <mat-action-row>
+        <button mat-button color="warn" (click)="prevStep()">Previous</button>
+        <button mat-button color="primary" (click)="nextStep()">End</button>
+      </mat-action-row>
+    </mat-expansion-panel>
+
+  </mat-accordion>
